@@ -76,6 +76,7 @@ class CnpValidatorService extends AbstractController
     {
         $code = substr($value, 7, 2);
         $county = $this->entityManager->getRepository(Counties::class)->findOneBy(['code' => $code]);
+
         if (!is_null($county)) {
             return true;
         }
