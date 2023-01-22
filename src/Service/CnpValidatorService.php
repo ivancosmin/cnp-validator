@@ -29,6 +29,10 @@ class CnpValidatorService extends AbstractController
             return false;
         }
 
+        if(!$this->isUniqueCodeValid($value)){
+            return false;
+        }
+
         if(!$this->isCheckDigitValid($value)){
             return false;
         }
@@ -77,6 +81,11 @@ class CnpValidatorService extends AbstractController
         }
 
         return false;
+    }
+
+    private function isUniqueCodeValid(string $value): bool
+    {
+        return (int)$value[11] > 0;
     }
 
     private function isCheckDigitValid(string $value): bool
